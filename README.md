@@ -36,33 +36,129 @@ This Project contains steps like:
 ## 📋 Requirements
 
 ```bash
-pip install -r requirements.txt
-```
 
 ## 🎯 Quick Start
 
-### 1️⃣ Train the Model
-```bash
-cd Cattle-Breed-Classification
-python train.py
-```
-This will train the model for 10 epochs and save the best model as `Best_Cattle_Breed.h5`.
+### Prerequisites
+- **Python 3.11** (recommended for TensorFlow 2.20.0 compatibility)
+- **Node.js v22+** and npm
+- Trained model file `Best_Cattle_Breed.h5` (generated from `train.py`)
 
-### 2️⃣ Test with GUI (Recommended)
+### 🚀 Run Locally (Easy Method)
+
+**Option 1: One-Click Startup (Recommended)**
+```powershell
+.\start_all.ps1
+```
+This automated script will:
+- Start the backend API server (Flask on http://127.0.0.1:5000)
+- Wait for backend health check
+- Start the frontend dev server (Vite on http://localhost:8080)
+- Open both in separate PowerShell windows
+
+**Option 2: Manual Setup**
+
+1️⃣ **Create Python Virtual Environment:**
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+```
+
+2️⃣ **Install Backend Dependencies:**
+```powershell
+pip install -r requirements.txt
+```
+
+3️⃣ **Start Backend API:**
+```powershell
+.\start_backend.ps1
+# Or manually: python api.py
+```
+Backend will be available at: http://127.0.0.1:5000
+
+4️⃣ **Start Frontend (New Terminal):**
+```powershell
+.\start_frontend.ps1
+# Or manually: 
+# cd Cattles-Breed-Detection-Frontend\Frontend
+# npm install
+# npm run dev
+```
+Frontend will be available at: http://localhost:8080
+
+### 🧪 Test the System
+
+**Health Check:**
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/health"
+```
+
+**Get Supported Breeds:**
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/breeds"
+```
+
+**Predict from Image:**
+```powershell
+$response = Invoke-WebRequest -Uri "http://127.0.0.1:5000/predict" `
+  -Method POST -Form @{ image = Get-Item "path\to\cattle.jpg" }
+$response.Content | ConvertFrom-Json
+```
+
+### 🎨 Desktop GUI (Alternative)
 ```bash
 python chatbot.py
-```
-- Click "Select Cattle Image"
-- Choose an image
 - See results with color coding:
   - **Green** (≥70%): Direct breed match ✅
   - **Orange** (40-70%): Similar/related breed ⚠️
   - **Red** (<40%): Breed not found ❌
 
-### 3️⃣ Test with CLI
+### 🔧 CLI Prediction
 ```bash
 python predict.py path/to/cattle_image.jpg
 ```
+
+### 📝 Training Your Own Model
+```bash
+python train.py
+```
+This will train the model for 10 epochs and save the best model as `Best_Cattle_Breed.h5`.
+
+---
+
+## ⚙️ Helper Scripts
+
+The repository includes PowerShell automation scripts for Windows:
+
+| Script | Purpose |
+|--------|---------|
+| `start_all.ps1` | **One-click launcher** - Starts both backend and frontend with health check |
+| `start_backend.ps1` | Activates venv and starts Flask API server |
+| `start_frontend.ps1` | Installs dependencies and starts Vite dev server |
+
+### Troubleshooting Tips
+
+🔸 **TensorFlow Installation Issues:**
+- Use Python 3.11 or 3.10 (TensorFlow 2.20.0 compatibility)
+- Recreate the virtual environment if pip fails on TensorFlow wheels
+
+🔸 **Backend Not Starting:**
+- Ensure `Best_Cattle_Breed.h5` model file exists in the root directory
+- Check if port 5000 is already in use: `netstat -ano | findstr :5000`
+- Verify virtual environment is activated: `.\.venv\Scripts\Activate.ps1`
+
+🔸 **Frontend Connection Issues:**
+- Backend must be running before starting frontend
+- Check CORS is enabled in `api.py` (already configured)
+- Verify backend URL in frontend code points to `http://127.0.0.1:5000`
+
+🔸 **Production Deployment:**
+- Use WSGI server (Gunicorn/Waitress) instead of Flask dev server
+- Set proper environment variables for production
+- Serve frontend with nginx or similar web server
+
+---
 
 ## 📊 Model Performance
 

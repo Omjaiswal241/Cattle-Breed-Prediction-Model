@@ -160,6 +160,7 @@ plot_confusion_matrix(cm, CLASS_NAMES)
 acc = np.mean(y_true == y_pred)
 print(f"✅ Final Validation Accuracy: {acc:.4f}")
 
-# cd D:\CattleBreedDetection\Cattle-Breed-Classification; python api.py
+# powershell -NoProfile -ExecutionPolicy Bypass -File .\start_all.ps1
 
-# cd D:\CattleBreedDetection\Cattle-Breed-Classification\Cattles-Breed-Detection-Frontend\Frontend; npm run dev
+# Backend running at http://127.0.0.1:5000
+# Frontend running at http://localhost:8080
