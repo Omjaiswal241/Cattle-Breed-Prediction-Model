@@ -41,13 +41,6 @@ if not os.path.exists(MODEL_PATH):
 model = tf.keras.models.load_model(MODEL_PATH)
 print(f"✅ Model loaded successfully from {MODEL_PATH}")
 
-# Load class names from dataset directory
-if not os.path.isdir(DATA_DIR):
-    raise FileNotFoundError(f"❌ Dataset directory '{DATA_DIR}' not found.")
-
-CLASS_NAMES = sorted([d for d in os.listdir(DATA_DIR) 
-                     if os.path.isdir(os.path.join(DATA_DIR, d))])
-print(f"✅ Loaded {len(CLASS_NAMES)} cattle breeds")
 # Load class names
 if os.path.isdir(DATA_DIR):
     # Preferred: derive class names from dataset folders when available
