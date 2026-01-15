@@ -48,6 +48,60 @@ if not os.path.isdir(DATA_DIR):
 CLASS_NAMES = sorted([d for d in os.listdir(DATA_DIR) 
                      if os.path.isdir(os.path.join(DATA_DIR, d))])
 print(f"✅ Loaded {len(CLASS_NAMES)} cattle breeds")
+# Load class names
+if os.path.isdir(DATA_DIR):
+    # Preferred: derive class names from dataset folders when available
+    CLASS_NAMES = sorted([
+        d for d in os.listdir(DATA_DIR)
+        if os.path.isdir(os.path.join(DATA_DIR, d))
+    ])
+    print(f"✅ Loaded {len(CLASS_NAMES)} cattle breeds from dataset directory")
+else:
+    # Fallback for deployments where the full Dataset folder is not present
+    CLASS_NAMES = [
+        "Alambadi",
+        "Amritmahal",
+        "Ayrshire",
+        "Banni",
+        "Bargur",
+        "Bhadawari",
+        "Brown_Swiss",
+        "Dangi",
+        "Deoni",
+        "Gir",
+        "Guernsey",
+        "Hallikar",
+        "Hariana",
+        "Holstein_Friesian",
+        "Jaffrabadi",
+        "Jersey",
+        "Kangayam",
+        "Kankrej",
+        "Kasargod",
+        "Kenkatha",
+        "Kherigarh",
+        "Khillari",
+        "Krishna_Valley",
+        "Malnad_gidda",
+        "Mehsana",
+        "Murrah",
+        "Nagori",
+        "Nagpuri",
+        "Nili_Ravi",
+        "Nimari",
+        "Ongole",
+        "Pulikulam",
+        "Rathi",
+        "Red_Dane",
+        "Red_Sindhi",
+        "Sahiwal",
+        "Surti",
+        "Tharparkar",
+        "Toda",
+        "Umblachery",
+        "Vechur",
+    ]
+    print(f"❌ Dataset directory '{DATA_DIR}' not found; using built-in list of {len(CLASS_NAMES)} cattle breeds")
 
 # ==================== HELPER FUNCTIONS ====================
 
