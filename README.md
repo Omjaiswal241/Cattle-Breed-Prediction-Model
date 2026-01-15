@@ -21,6 +21,10 @@ This Project contains steps like:
 • Apply AI in agriculture & livestock research
 • Implement confidence thresholds to reject non-cattle or unknown breeds
 
+## 🌐 Live Demo
+
+- Frontend (Render): https://cattle-breed-prediction-model-frontend.onrender.com
+
 ## 🚀 Features
 
 ✅ **41 Indian Cattle Breeds** - Trained on diverse cattle breeds including Gir, Sahiwal, Red Sindhi, and more  
