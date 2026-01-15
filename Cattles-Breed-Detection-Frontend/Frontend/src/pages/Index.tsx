@@ -4,8 +4,8 @@ import ImageUpload from "@/components/ImageUpload";
 import DetectionResults from "@/components/DetectionResults";
 import { toast } from "sonner";
 
-// Backend API configuration
-const API_URL = "http://localhost:5000";
+// Backend API configuration (overridden in production via VITE_API_URL)
+const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
 
 interface DetectionResult {
   breed: string;

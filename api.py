@@ -197,10 +197,13 @@ if __name__ == '__main__':
     print("💡 Test with: curl -X POST -F 'image=@test.jpg' http://localhost:5000/predict")
     print("\n🔄 Starting Flask server...\n")
     
+    # Determine port from environment (useful for platforms like Render)
+    port = int(os.environ.get("PORT", "5000"))
+
     # Use waitress for more stable production serving
     if USE_WAITRESS:
         print("✅ Using Waitress WSGI server for stable hosting")
-        serve(app, host='127.0.0.1', port=5000, threads=4)
+        serve(app, host='0.0.0.0', port=port, threads=4)
     else:
         print("⚠️ Using Flask development server")
-        app.run(host='127.0.0.1', port=5000, debug=False, use_reloader=False)
+        app.run(host='0.0.0.0', port=port, debug=False, use_reloader=False)
