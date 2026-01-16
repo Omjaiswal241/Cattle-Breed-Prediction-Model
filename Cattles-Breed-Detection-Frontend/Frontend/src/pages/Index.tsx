@@ -137,6 +137,31 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <section
+        id="learn-more"
+        className="border-t border-border/60 bg-muted/30"
+      >
+        <div className="container px-4 py-16 mx-auto">
+          <div className="max-w-4xl mx-auto bg-gradient-card rounded-xl p-8 shadow-elegant border border-border text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Learn More
+            </h2>
+            <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+              India is home to one of the world's largest and most diverse cattle populations, with 41 recognized indigenous cattle breeds, each adapted to specific climatic conditions and agricultural needs. Accurate identification of cattle breeds plays a crucial role in livestock management, genetic conservation, dairy productivity, and sustainable farming practices.
+            </p>
+            <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+              The Cattle Breed Prediction Model is designed to automatically identify cattle breeds using machine learning and image-based analysis. By analyzing key visual features such as body structure, coat pattern, horn shape, facial characteristics, and color distribution, the system predicts the most likely breed from the available dataset of Indian cattle breeds.
+            </p>
+            <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+              This solution helps reduce dependency on manual identification, which often requires expert knowledge and is prone to human error. The model can assist farmers, veterinarians, researchers, and government agencies in making informed decisions related to breeding programs, health monitoring, and policy implementation.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Aligned with the <b>Smart India Hackathon (SIH) 2025 problem statement</b>, this project aims to promote digital transformation in agriculture and animal husbandry. It supports initiatives such as breed preservation, productivity enhancement, and data-driven livestock management, contributing to the growth of India's rural economy and sustainable agricultural development.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

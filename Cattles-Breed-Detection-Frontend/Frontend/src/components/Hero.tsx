@@ -22,9 +22,12 @@ const Hero = () => {
             <a href="#upload" className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-elegant hover:bg-primary/90 transition-all hover:scale-105">
               Start Detection
             </a>
-            <button className="inline-flex items-center justify-center rounded-md border-2 border-primary bg-transparent px-8 py-4 text-lg font-semibold text-primary hover:bg-primary/10 transition-all">
+            <a
+              href="#learn-more"
+              className="inline-flex items-center justify-center rounded-md border-2 border-primary bg-transparent px-8 py-4 text-lg font-semibold text-primary hover:bg-primary/10 transition-all"
+            >
               Learn More
-            </button>
+            </a>
           </div>
         </div>
       </div>
